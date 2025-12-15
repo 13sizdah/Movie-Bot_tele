@@ -1,0 +1,19 @@
+# تنظیمات امنیتی
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /web/
+    
+    # جلوگیری از دسترسی مستقیم به فایل‌های PHP در پوشه includes
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# تنظیمات PHP
+php_flag display_errors Off
+php_flag log_errors On
+
+# تنظیمات امنیتی
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
